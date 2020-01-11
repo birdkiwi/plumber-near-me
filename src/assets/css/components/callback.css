@@ -1,0 +1,134 @@
+.callback-modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.callback-modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: #fff;
+    z-index: 2000;
+    min-width: 300px;
+    max-width: 400px;
+    box-shadow: 0 0 25px -10px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+.callback-modal-header {
+    display: flex;
+    align-items: center;
+    background: #fafafa;
+    border-bottom: 1px solid #dfdfdf;
+    padding: 10px;
+}
+
+.callback-modal-header-avatar {
+    padding-right: 15px;
+}
+
+.callback-modal-header-avatar-img {
+    border-radius: 48px;
+    width: 48px;
+    height: 48px;
+}
+
+.callback-modal-header-name {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.callback-modal-header .vue-star-rating-star {
+    width: 18px;
+    height: 18px;
+}
+
+.callback-modal-header-rating-stars {
+    color: #e7711c;
+    font-size: 12px;
+    margin-top: 3px !important;
+}
+
+.callback-modal-body {
+    padding: 15px;
+}
+
+.callback-modal-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: url("../../images/icon-close.svg") no-repeat center;
+    width: 36px;
+    height: 36px;
+    opacity: 0.5;
+    border: 0;
+    color: transparent;
+    font-size: 0;
+    box-shadow: none;
+    transition: all 200ms;
+}
+
+.callback-modal-close:hover,
+.callback-modal-close:focus {
+    opacity: 1;
+    transition: all 200ms;
+}
+
+.callback-modal-desc {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.callback-modal-desc-title {
+    color: #1e8e3e;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.callback-modal-form {
+    text-align: center;
+}
+
+.callback-modal-form-input {
+    background: #e2e2e2;
+    color: #000;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 30px;
+    padding: 7px 15px;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.callback-modal-form-input-error {
+    background-color: rgba(255, 77, 59, 0.38);
+}
+
+.callback-modal-form-submit {
+    background: #70ce14;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 30px;
+    font-size: 22px;
+    padding: 10px 35px;
+    border: none;
+    box-shadow: none;
+    transition: all 200ms;
+}
+
+.callback-modal-form-submit:hover,
+.callback-modal-form-submit:focus {
+    background: #78db15;
+    transition: all 200ms;
+}

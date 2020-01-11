@@ -1,0 +1,155 @@
+.person-dialog-modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: #fff;
+    z-index: 2000;
+    min-height: 300px;
+    min-width: 300px;
+    max-width: 400px;
+    box-shadow: 0 0 25px -10px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    overflow-y: auto;
+    border: 2px solid #1e8e3e;
+}
+
+.person-dialog-modal-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: url("../../images/icon-close.svg") no-repeat center;
+    width: 36px;
+    height: 36px;
+    opacity: 0.5;
+    border: 0;
+    color: transparent;
+    font-size: 0;
+    box-shadow: none;
+    transition: all 200ms;
+}
+
+.person-dialog-modal-close:hover,
+.person-dialog-modal-close:focus {
+    opacity: 1;
+    transition: all 200ms;
+}
+
+.person-dialog-modal-header {
+    display: flex;
+    align-items: center;
+    background: #fafafa;
+    border-bottom: 1px solid #dfdfdf;
+    padding: 10px;
+}
+
+.person-dialog-modal-header-avatar {
+    padding-right: 15px;
+}
+
+.person-dialog-modal-header-avatar-img {
+    border-radius: 48px;
+    width: 48px;
+    height: 48px;
+}
+
+.person-dialog-modal-header-name {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.person-dialog-modal-header .vue-star-rating-star {
+    width: 18px;
+    height: 18px;
+}
+
+.person-dialog-modal-header-rating-stars {
+    color: #e7711c;
+    font-size: 12px;
+    margin-top: 3px !important;
+}
+
+.person-dialog-modal-body {
+    padding: 10px;
+}
+
+.person-dialog-modal-chat {
+
+}
+
+.person-dialog-modal-chat-message {
+    margin-bottom: 15px;
+}
+
+.person-dialog-modal-chat-person {
+    display: flex;
+    align-items: flex-start;
+}
+
+.person-dialog-modal-chat-person-avatar {
+    padding-right: 10px;
+}
+
+.person-dialog-modal-chat-person-avatar-img {
+    border-radius: 48px;
+}
+
+.person-dialog-modal-chat-person-message-typing {
+    font-size: 14px;
+    color: #848484;
+    margin-top: 8px;
+}
+
+.person-dialog-modal-chat-person-message-bubble {
+    font-size: 16px;
+    background: #e6e5ec;
+    padding: 7px 14px;
+    border-radius: 14px;
+}
+
+.person-dialog-modal-chat-person-right {
+    flex-direction: row-reverse;
+}
+
+.person-dialog-modal-chat-person-right .person-dialog-modal-chat-person-avatar {
+    padding-right: 0;
+    padding-left: 10px;
+}
+
+.person-dialog-modal-chat-person-right .person-dialog-modal-chat-person-message-bubble {
+    background: #2493fd;
+    color: #fff;
+}
+
+.person-dialog-modal-callbackbtn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    border: 2px solid #1e8e3e;
+    padding: 10px 15px;
+    border-radius: 15px;
+    background: #ebfff1;
+}
+
+.person-dialog-modal-callbackbtn:hover,
+.person-dialog-modal-callbackbtn:focus {
+    border-color: #26bb52;
+    background: rgba(235, 255, 241, 0.5);
+}
+
+.person-dialog-modal-callbackbtn-content {
+    text-align: center;
+    font-size: 16px;
+}
+
+.person-dialog-modal-callbackbtn-icon {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.person-dialog-modal-callbackbtn-title {
+    color: #1e8e3e;
+    font-size: 20px;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,24 @@
+.map-info-area {
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 50%;
+    max-width: 640px;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 15px;
+    border-radius: 0 0 10px 10px;
+    color: #fff;
+    font-weight: bold;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 16px;
+}
+
+@media (max-width: 660px) {
+    .map-info-area {
+        width: 100%;
+        border-radius: 0;
+        font-size: 13px;
+    }
+}

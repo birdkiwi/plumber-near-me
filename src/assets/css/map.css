@@ -1,0 +1,100 @@
+.main-map {
+    position: relative;
+    flex: 1 0 auto;
+}
+
+.main-map-leaflet {
+    width: 100%;
+    height: 100%;
+}
+
+.main-map-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.main-map-marker-plumber {
+    position: relative;
+    width: 230px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center;
+}
+
+.main-map-marker-plumber:hover {
+    z-index: 1010 !important;
+}
+
+.main-map-marker-plumber-avatar {
+    margin-right: 10px;
+}
+
+.main-map-marker-plumber-avatar-img {
+    border-radius: 48px;
+}
+
+.main-map-marker-plumber-buttons {
+    font-size: 13px;
+}
+
+.main-map-marker-plumber-button-available {
+    border-radius: 16px;
+    background: url("../images/icon-chat-white.svg") 10px center no-repeat #3977e4;
+    background-size: 16px;
+    padding: 4px 10px 4px 30px;
+    color: #fff;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 3px;
+}
+
+.main-map-marker-plumber-button-available:hover,
+.main-map-marker-plumber-button-available:focus {
+    background-color: #58a7ff;
+}
+
+.main-map-marker-plumber-button-available-active {
+    background-color: #22b14c;
+}
+
+.main-map-marker-plumber-button-available-active:hover,
+.main-map-marker-plumber-button-available-active:active {
+    background-color: #27d259;
+}
+
+.main-map-marker-plumber-button-callback {
+    padding: 4px 10px 4px 30px;
+    border-radius: 16px;
+    background: url("../images/icon-callback-white.svg") 10px center no-repeat #22b14c;
+    background-size: 16px;
+    color: #fff;
+    border: none;
+    box-shadow: none;
+}
+
+.main-map-marker-plumber-button-callback:hover,
+.main-map-marker-plumber-button-callback:focus {
+    background-color: #27d259;
+}
+
+.main-map-marker-user {
+    width: 96px !important;
+    height: 96px !important;
+    text-align: center;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 1000 !important;
+}
+
+.main-map-marker-user-title {
+    background: rgba(255, 255, 255, 0.75);
+    padding: 3px;
+    border-radius: 3px;
+}
