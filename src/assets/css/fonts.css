@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,500,700|Raleway:400,700&display=swap');
+
+.ff-raleway {
+    font-family: 'Raleway', sans-serif;
+}
+
+.ff-ibm-plex {
+    font-family: 'IBM Plex Sans', sans-serif;
+}

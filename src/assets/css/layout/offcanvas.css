@@ -56,3 +56,8 @@
     background: #1e8e3e;
     color: #fff;
 }
+
+.main-offcanvas-menu-item-link-active:hover,
+.main-offcanvas-menu-item-link-active:focus {
+    color: #fff;
+}

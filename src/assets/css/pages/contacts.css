@@ -1,0 +1,63 @@
+.contacts-page {
+
+}
+
+.contacts-page-title {
+    font-family: Raleway, sans-serif;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+@media (max-width: 660px) {
+    .contacts-page-title {
+        font-size: 30px;
+    }
+}
+
+.contacts-page-grid {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 660px) {
+    .contacts-page-grid {
+        flex-direction: column-reverse;
+    }
+}
+
+.contacts-page-content {
+    flex: 0 0 40%;
+}
+
+@media (max-width: 660px) {
+    .contacts-page-content {
+        flex: 0 1 auto;
+    }
+}
+
+.contacts-page-subtitle {
+    text-transform: uppercase;
+    color: #2ea852;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.contacts-page-desc {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.contacts-page-map {
+
+}
+
+.contacts-page-map-img {
+    max-width: 100%;
+}
+
+@media (max-width: 660px) {
+    .contacts-page-map-img {
+        margin-bottom: 40px;
+    }
+}

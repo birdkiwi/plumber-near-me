@@ -63,7 +63,7 @@
 <script>
     import '../assets/css/components/callback.css';
     import StarRating from "vue-star-rating";
-    import { VueMaskDirective } from 'v-mask'
+    import { VueMaskDirective } from 'v-mask';
 
     export default {
         data() {

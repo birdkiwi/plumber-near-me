@@ -1,4 +1,7 @@
 .main-main {
     flex: 1 0 auto;
     display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    min-height: auto;
 }

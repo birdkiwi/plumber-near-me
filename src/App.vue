@@ -11,12 +11,11 @@ import VueRouter from 'vue-router';
 import VueLocalStorage from 'vue-localstorage';
 import VueAnalytics from 'vue-analytics';
 import router from './router';
-import { directive as onClickOutside } from 'vue-on-click-outside'
+import vClickOutside from 'v-click-outside'
 
 Vue.use(VueRouter);
 Vue.use(VueLocalStorage);
-
-Vue.directive('on-click-outside', onClickOutside);
+Vue.use(vClickOutside);
 
 import './assets/css/style.css';
 import 'normalize.css';

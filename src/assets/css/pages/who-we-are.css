@@ -1,0 +1,9 @@
+.main-main-who-we-are {
+    min-height: 1250px !important;
+}
+
+@media (max-width: 1200px) {
+    .main-main-who-we-are {
+        min-height: auto !important;
+    }
+}

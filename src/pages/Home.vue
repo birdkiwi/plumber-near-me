@@ -3,6 +3,9 @@
         <Header />
         <main class="main-main">
             <Map />
+            <div class="main-wrapper">
+                <Contact-form class-name="pt-l pb-l" />
+            </div>
         </main>
         <Footer />
     </div>
@@ -10,6 +13,7 @@
 <script>
     import Header from '../components/Header.vue';
     import Map from '../components/Map.vue';
+    import ContactForm from '../components/ContactForm.vue';
     import Footer from '../components/Footer.vue';
 
     export default {
@@ -17,6 +21,7 @@
             Header,
             Map,
             Footer,
+            ContactForm
         }
     }
 </script>

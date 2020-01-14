@@ -1,6 +1,12 @@
 @import './layout/base.css';
 @import './layout/header.css';
 @import './layout/main.css';
+@import './layout/footer.css';
 @import './map.css';
 @import './transitions.css';
+@import './fonts.css';
+@import './spaces.css';
 @import '~animate.css/animate.css';
+
+/* Blocks */
+@import './blocks/hero.css';
