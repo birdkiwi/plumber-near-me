@@ -17,7 +17,7 @@
                         class="main-map-marker"
                         v-for="plumber in markers.plumbers"
                         :key="plumber.id"
-                        :lat-lng="[plumber.position[1], plumber.position[0]]"
+                        :lat-lng="plumber.newposition"
                         ref="marker"
                         @click="iconClick(plumber, $event)"
                 >
@@ -68,7 +68,7 @@
 <script>
     import config from "../config";
     import { LMap, LTileLayer, LMarker, LIcon } from 'vue2-leaflet';
-    import L from 'leaflet';
+    // import L from 'leaflet';
     import 'leaflet/dist/leaflet.css';
     import Spinner from 'vue-simple-spinner'
     import Dialog from './Dialog.vue';
@@ -86,9 +86,14 @@
                 center: config.mapCenter,
                 bounds: null,
                 mapOptions: {
-                    dragging: !L.Browser.mobile,
-                    touchZoom: true,
-                    scrollWheelZoom: false
+                    touchZoom: false,
+                    scrollWheelZoom: false,
+                    zoomControl: false,
+                    boxZoom: false,
+                    doubleClickZoom: false,
+                    dragging: false,
+                    tap: false,
+                    // dragging: !L.Browser.mobile,
                 },
                 markers: [],
                 dialogPerson: false,
@@ -101,6 +106,10 @@
         },
         localStorage: {
             evokedPersons: {
+                type: Array,
+                default: []
+            },
+            personsLocation: {
                 type: Array,
                 default: []
             }
@@ -135,24 +144,50 @@
                 })
                     .then(response => response.json());
             },
+            generateMarkersPositions(markers) {
+                const bounds = this.$refs.mainMap.mapObject.getBounds();
+                const southWest = bounds.getSouthWest();
+                const northEast = bounds.getNorthEast();
+                const lngSpan = northEast.lng - southWest.lng;
+                const latSpan = northEast.lat - southWest.lat;
+
+                markers.forEach(marker => {
+                    const ls = this.$localStorage.get('personsLocation', []);
+                    const lsPerson = ls.find(person => person.id === marker.id);
+
+                    if (lsPerson) {
+                        marker.newposition = lsPerson.position;
+                    } else {
+                        marker.newposition = [southWest.lat + latSpan * Math.random(),southWest.lng + lngSpan * Math.random()];
+                        ls.push({id: marker.id, position: marker.newposition});
+                        this.$localStorage.set('personsLocation', ls);
+                    }
+                });
+
+
+            },
             geoFindMe() {
-                if (!navigator.geolocation) {
-                    alert('Geolocation is not supported by your browser');
-                } else {
-                    // status.textContent = 'Locating…';
-                    navigator.geolocation.getCurrentPosition(position => {
-                        this.userGeo.lat = position.coords.latitude;
-                        this.userGeo.lng = position.coords.longitude;
-                        this.$nextTick(() => {
-                            this.$refs.mainMap.mapObject.panTo([this.userGeo.lat, this.userGeo.lng]);
+                return new Promise((resolve, reject) => {
+                    if (!navigator.geolocation) {
+                        reject();
+                        alert('Geolocation is not supported by your browser');
+                    } else {
+                        navigator.geolocation.getCurrentPosition(position => {
+                            this.userGeo.lat = position.coords.latitude;
+                            this.userGeo.lng = position.coords.longitude;
+                            this.$nextTick(() => {
+                                this.$refs.mainMap.mapObject.panTo([this.userGeo.lat, this.userGeo.lng]);
+                            });
+                            resolve([position.coords.latitude, position.coords.longitude]);
+                        }, error => {
+                            reject('Unable to retrieve your location');
+                            alert('Unable to retrieve your location');
+                            this.infoAreaMessage = 'Unable to retrieve your location';
+                            this.infoAreaType = 'error';
+                            console.log(error);
                         });
-                    }, error => {
-                        alert('Unable to retrieve your location');
-                        this.infoAreaMessage = 'Unable to retrieve your location';
-                        this.infoAreaType = 'error';
-                        console.log(error);
-                    });
-                }
+                    }
+                });
             },
             openDialog(person) {
                 this.dialogPerson = person;
@@ -178,17 +213,18 @@
                 return this.$localStorage.get('evokedPersons', []).indexOf(personId) > -1;
             }
         },
-        mounted() {
-            this.getMarkers().then(markers => {
-                this.$set(this, 'markers', markers);
-                this.mapSpinner = false;
+        async mounted() {
+            await this.geoFindMe();
+            const markers = await this.getMarkers();
 
-                if (markers.plumbers.length > 1) {
-                    this.infoAreaMessage = `We found ${markers.plumbers.length} plumbers nearby! Click to chat with a plumber or order a callback.`;
-                }
-            });
+            this.generateMarkersPositions(markers.plumbers);
 
-            this.geoFindMe();
+            this.$set(this, 'markers', markers);
+            this.mapSpinner = false;
+
+            if (markers.plumbers.length > 1) {
+                this.infoAreaMessage = `We found ${markers.plumbers.length} plumbers nearby! Click to chat with a plumber or order a callback.`;
+            }
         }
     }
 </script>

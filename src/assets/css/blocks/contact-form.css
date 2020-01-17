@@ -12,6 +12,18 @@
     margin-bottom: 30px;
 }
 
+@media (max-width: 1200px) {
+    .contact-form-title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 760px) {
+    .contact-form-title {
+        font-size: 26px;
+    }
+}
+
 .contact-form-group {
     margin-bottom: 25px;
 }

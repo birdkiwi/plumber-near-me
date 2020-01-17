@@ -9,19 +9,21 @@ let persons = [];
 
 rawData.plumbers.forEach(function (plumber) {
     const coordinates = plumber.coordinates;
-    const polygon = {
-        type: "Feature",
-        properties: {},
-        geometry: {
-            type: "Polygon",
-            coordinates: [coordinates]
-        }
-    };
+    if (plumber.coordinates) {
+        const polygon = {
+            type: "Feature",
+            properties: {},
+            geometry: {
+                type: "Polygon",
+                coordinates: [coordinates]
+            }
+        };
 
-    const points = randomPointsOnPolygon(1, polygon);
-    plumber.position = points[0].geometry.coordinates;
-    delete plumber.coordinates;
-    console.log(plumber);
+        const points = randomPointsOnPolygon(1, polygon);
+        plumber.position = points[0].geometry.coordinates;
+        delete plumber.coordinates;
+        console.log(plumber);
+    }
 
     persons.push(plumber);
 });
