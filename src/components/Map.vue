@@ -73,7 +73,8 @@
     import Spinner from 'vue-simple-spinner'
     import Dialog from './Dialog.vue';
     import Callback from './Callback.vue';
-    import MapInfoArea from "./MapInfoArea.vue";
+    import MapInfoArea from './MapInfoArea.vue';
+    import * as turf from '@turf/turf';
 
     export default {
         data () {
@@ -203,6 +204,11 @@
                     }
                 });
             },
+            geoCheckLocationLimit() {
+                const pt = turf.point([this.userGeo.lng, this.userGeo.lat]);
+                const poly = turf.polygon(config.limitPolygon.coordinates);
+                return turf.booleanPointInPolygon(pt, poly);
+            },
             openDialog(person) {
                 this.dialogPerson = person;
             },
@@ -229,16 +235,22 @@
         },
         async mounted() {
             await this.geoFindMe();
-            const markers = await this.getMarkers();
+            if (this.geoCheckLocationLimit()) {
+                const markers = await this.getMarkers();
 
-            this.generateMarkersPositions(markers.plumbers);
+                this.generateMarkersPositions(markers.plumbers);
 
-            this.$set(this, 'markers', markers);
-            this.mapSpinner = false;
+                this.$set(this, 'markers', markers);
 
-            if (markers.plumbers.length > 1) {
-                this.infoAreaMessage = `We found ${markers.plumbers.length} available plumbers nearby!`;
+                if (markers.plumbers.length > 1) {
+                    this.infoAreaMessage = `We found ${markers.plumbers.length} available plumbers nearby!`;
+                }
+            } else {
+                this.infoAreaMessage = 'Unfortunately you are too far, no plumbers found nearby';
+                this.infoAreaType = 'warning';
             }
+
+            this.mapSpinner = false;
         }
     }
 </script>

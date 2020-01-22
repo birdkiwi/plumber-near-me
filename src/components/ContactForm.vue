@@ -1,6 +1,8 @@
 <template>
     <form action="#" @submit.prevent="submit" class="contact-form" :class="className">
-        <div class="contact-form-title">Drop Us a Message</div>
+        <div class="contact-form-title">
+            We will find a best plumber near you within 5 minutes
+        </div>
 
         <div class="contact-form-group">
             <input
