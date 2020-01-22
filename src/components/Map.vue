@@ -112,6 +112,10 @@
             personsLocation: {
                 type: Array,
                 default: []
+            },
+            personsLocationTime: {
+                type: Number,
+                default: Date.now()
             }
         },
         components: {
@@ -150,21 +154,31 @@
                 const northEast = bounds.getNorthEast();
                 const lngSpan = northEast.lng - southWest.lng;
                 const latSpan = northEast.lat - southWest.lat;
+                const lsTimeout = (Date.now() - this.$localStorage.get('personsLocationTime', 0)) > config.personUpdateInterval;
 
                 markers.forEach(marker => {
                     const ls = this.$localStorage.get('personsLocation', []);
                     const lsPerson = ls.find(person => person.id === marker.id);
+                    const lsPersonIndex = ls.findIndex(person => person.id === marker.id);
 
-                    if (lsPerson) {
+                    if (lsPerson && !lsTimeout) {
                         marker.newposition = lsPerson.position;
                     } else {
                         marker.newposition = [southWest.lat + latSpan * Math.random(),southWest.lng + lngSpan * Math.random()];
-                        ls.push({id: marker.id, position: marker.newposition});
-                        this.$localStorage.set('personsLocation', ls);
                     }
+
+                    if (lsPerson) {
+                        ls[lsPersonIndex].position = marker.newposition;
+                    } else {
+                        ls.push({id: marker.id, position: marker.newposition});
+                    }
+
+                    this.$localStorage.set('personsLocation', ls);
                 });
 
-
+                if (lsTimeout) {
+                    this.$localStorage.set('personsLocationTime', Date.now());
+                }
             },
             geoFindMe() {
                 return new Promise((resolve, reject) => {

@@ -4,7 +4,8 @@ const config = {
     // mapTilesUrl: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
     mapTilesUrl: 'https://tile-{s}.openstreetmap.fr/hot/{z}/{x}/{y}.png',
     googleAnalyticsId: '',
-    dataUrl: 'https://alex.toklovich.com:8889/data/index.json'
+    dataUrl: 'https://alex.toklovich.com:8889/data/index.json',
+    personUpdateInterval: 3600000,
 };
 
 export default config;
