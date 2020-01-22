@@ -28,10 +28,10 @@
         </div>
         <div class="contact-form-group">
             <input
-                    type="email"
-                    name="email"
-                    v-model="email.value"
-                    placeholder="E-mail"
+                    type="text"
+                    name="address"
+                    v-model="address.value"
+                    placeholder="Your address"
                     class="contact-form-input"
             >
         </div>
@@ -67,7 +67,7 @@
                     value: '',
                     error: false,
                 },
-                email: {
+                address: {
                     value: ''
                 },
                 phone: {

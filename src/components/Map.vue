@@ -35,7 +35,7 @@
                                     Yes, I'm available
                                 </template>
                                 <template v-else>
-                                    Is this still available?
+                                    Are you still available?
                                 </template>
                             </button>
                             <button data-button-callback class="main-map-marker-plumber-button-callback">Callback</button>
@@ -50,7 +50,7 @@
                     ref="userMarker"
             >
                 <l-icon class-name="main-map-marker-user">
-                    <img src="../assets/images/icon-user-location.svg" alt="">
+                    <img src="../assets/images/icon-user-location.svg" alt="" class="main-map-marker-user-img">
                     <div class="main-map-marker-user-title">This is your location</div>
                 </l-icon>
             </l-marker>
@@ -223,7 +223,7 @@
             this.mapSpinner = false;
 
             if (markers.plumbers.length > 1) {
-                this.infoAreaMessage = `We found ${markers.plumbers.length} plumbers nearby! Click to chat with a plumber or order a callback.`;
+                this.infoAreaMessage = `We found ${markers.plumbers.length} available plumbers nearby!`;
             }
         }
     }

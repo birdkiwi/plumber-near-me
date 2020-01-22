@@ -5,8 +5,6 @@
 </template>
 
 <script>
-    import '../assets/css/components/map-info-area.css';
-
     export default {
         props: ['type']
     }

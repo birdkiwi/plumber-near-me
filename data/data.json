@@ -6,7 +6,7 @@
       "lastName": "Startler 1",
       "rating": 4.5,
       "phone": "+7 999 999-99-99",
-      "avatar": "https://i.pravatar.cc/48?1",
+      "avatar": "https://i.pravatar.cc/64?1",
       "phoneRaw": "+79999999999",
       "categories": ["plumber"],
       "coordinates": [
@@ -50,7 +50,7 @@
       "lastName": "Startler 2",
       "rating": 4.7,
       "phone": "+7 999 999-99-99",
-      "avatar": "https://i.pravatar.cc/48?2",
+      "avatar": "https://i.pravatar.cc/64?2",
       "phoneRaw": "+79999999999",
       "categories": ["plumber"],
       "coordinates": [
@@ -86,7 +86,7 @@
       "lastName": "Startler 3",
       "rating": 4.7,
       "phone": "+7 999 999-99-99",
-      "avatar": "https://i.pravatar.cc/48?3",
+      "avatar": "https://i.pravatar.cc/64?3",
       "phoneRaw": "+79999999999",
       "categories": ["plumber"]
     },
@@ -96,7 +96,7 @@
       "lastName": "Startler 4",
       "rating": 4.7,
       "phone": "+7 999 999-99-99",
-      "avatar": "https://i.pravatar.cc/48?4",
+      "avatar": "https://i.pravatar.cc/64?4",
       "phoneRaw": "+79999999999",
       "categories": ["plumber"]
     },
@@ -106,7 +106,7 @@
       "lastName": "Startler 5",
       "rating": 4.7,
       "phone": "+7 999 999-99-99",
-      "avatar": "https://i.pravatar.cc/48?5",
+      "avatar": "https://i.pravatar.cc/64?5",
       "phoneRaw": "+79999999999",
       "categories": ["plumber"]
     },{
@@ -115,7 +115,7 @@
       "lastName": "Startler 6",
       "rating": 4.7,
       "phone": "+7 999 999-99-99",
-      "avatar": "https://i.pravatar.cc/48?6",
+      "avatar": "https://i.pravatar.cc/64?6",
       "phoneRaw": "+79999999999",
       "categories": ["plumber"]
     },{
@@ -124,7 +124,7 @@
       "lastName": "Startler 7",
       "rating": 4.7,
       "phone": "+7 999 999-99-99",
-      "avatar": "https://i.pravatar.cc/48?7",
+      "avatar": "https://i.pravatar.cc/64?7",
       "phoneRaw": "+79999999999",
       "categories": ["plumber"]
     },{
@@ -133,7 +133,7 @@
       "lastName": "Startler 8",
       "rating": 4.7,
       "phone": "+7 999 999-99-99",
-      "avatar": "https://i.pravatar.cc/48?8",
+      "avatar": "https://i.pravatar.cc/64?8",
       "phoneRaw": "+79999999999",
       "categories": ["plumber"]
     }
