@@ -54,18 +54,60 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div>
-                <a href="#" @click.prevent="$parent.openCallback(person)" class="person-dialog-modal-callbackbtn">
-                    <img src="../assets/images/icon-phone-rings.svg" class="person-dialog-modal-callbackbtn-icon" alt="" width="32" height="32">
-                    <div class="person-dialog-modal-callbackbtn-content">
-                        <div class="person-dialog-modal-callbackbtn-title">
-                            Leave a number
-                        </div>
-                        and we will call you back in 30 seconds!
-                    </div>
-                </a>
+                <transition name="fade">
+                    <form action="#" method="POST" @submit.prevent="submitForm" v-if="isEvoked" class="person-dialog-modal-chat-form">
+                        <input
+                                type="text"
+                                class="person-dialog-modal-chat-form-input"
+                                v-model="firstName.value"
+                                name="firstName"
+                                placeholder="First name"
+                                required
+                                @input="inputChange(firstName)"
+                                :class="firstName.error ? 'person-dialog-modal-chat-form-input-error' : ''"
+                        >
+                        <input
+                                type="text"
+                                class="person-dialog-modal-chat-form-input"
+                                v-model="lastName.value"
+                                name="lastName"
+                                placeholder="Last name"
+                                required
+                                @input="inputChange(lastName)"
+                                :class="lastName.error ? 'person-dialog-modal-chat-form-input-error' : ''"
+                        >
+                        <input
+                                type="text"
+                                class="person-dialog-modal-chat-form-input"
+                                v-model="address.value"
+                                name="address"
+                                placeholder="Address"
+                                required
+                                @input="inputChange(address)"
+                                :class="address.error ? 'person-dialog-modal-chat-form-input-error' : ''"
+                        >
+                        <input
+                                type="phone"
+                                class="person-dialog-modal-chat-form-input"
+                                name="phone"
+                                v-model="phone.value"
+                                placeholder="Your phone"
+                                v-mask="'+1 (###) ###-####'"
+                                @input="inputChange(phone)"
+                                :class="phone.error ? 'person-dialog-modal-chat-form-input-error' : ''"
+                                required
+                        >
+                        <button
+                                type="submit"
+                                @click.prevent="btnSubmit"
+                                class="person-dialog-modal-chat-form-submit"
+                                :disabled="isSubmiting"
+                        >
+                            Submit
+                        </button>
+                    </form>
+                </transition>
             </div>
         </div>
     </div>
@@ -74,14 +116,34 @@
 <script>
     import '../assets/css/components/dialog.css';
     import StarRating from 'vue-star-rating';
+    import {VueMaskDirective} from "v-mask";
 
     export default {
         data() {
             return {
                 isEvoked: false,
                 typing: true,
-                typingTimeout: 5000
+                typingTimeout: 5000,
+                firstName: {
+                    value: '',
+                    error: false,
+                },
+                lastName: {
+                    value: '',
+                    error: false,
+                },
+                address: {
+                    value: ''
+                },
+                phone: {
+                    value: '',
+                    error: false,
+                },
+                isSubmiting: false
             }
+        },
+        directives: {
+            mask: VueMaskDirective
         },
         props: ['person'],
         components: {
@@ -90,6 +152,50 @@
         methods: {
             closeDialog() {
                 this.$parent.closeDialog();
+            },
+            btnSubmit() {
+                if (this.validate()) {
+                    this.isSubmiting = true;
+
+                    setTimeout(() => {
+                        this.isSubmiting = false;
+                        alert('submit event here!');
+                    }, 2000);
+                }
+            },
+            submit() {
+                if (this.validate()) {
+                    this.isSubmiting = true;
+
+                    setTimeout(() => {
+                        this.isSubmiting = false;
+                        alert('submit event here!');
+                    }, 2000);
+                }
+            },
+            validate() {
+                let valid = true;
+
+                [this.firstName, this.lastName].forEach((input) => {
+                    if (!input.value) {
+                        input.error = true;
+                        valid = false;
+                    }
+                });
+
+                if (this.phone.value.length < 17) {
+                    this.phone.error = true;
+                    valid = false;
+                } else {
+                    this.phone.error = false;
+                }
+
+                return valid;
+            },
+            inputChange(input) {
+                if (input.error) {
+                    input.error = false;
+                }
             }
         },
         mounted() {
@@ -98,10 +204,10 @@
 
             if (!this.isEvoked) {
                 setTimeout(() => {
-                    this.typing = false;
                     let evokedPersons = this.$parent.$localStorage.get('evokedPersons', []);
                     evokedPersons.push(this.person.id);
                     this.$parent.$localStorage.set('evokedPersons', evokedPersons);
+                    this.isEvoked = true;
                 }, this.typingTimeout);
             }
         }

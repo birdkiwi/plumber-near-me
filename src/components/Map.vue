@@ -22,23 +22,30 @@
                         @click="iconClick(plumber, $event)"
                 >
                     <l-icon class-name="main-map-marker-plumber">
-                        <div class="main-map-marker-plumber-avatar">
-                            <img class="main-map-marker-plumber-avatar-img" :src="plumber.avatar" :alt="plumber.firstName + ' ' + plumber.lastName">
+                        <div class="main-map-marker-plumber-name-wrap">
+                            <div class="main-map-marker-plumber-name">
+                                {{ plumber.firstName + ' ' + plumber.lastName}}
+                            </div>
                         </div>
-                        <div class="main-map-marker-plumber-buttons">
-                            <button
-                                    type="button"
-                                    data-button-dialog
-                                    class="main-map-marker-plumber-button-available"
-                                    :class="personAvailableCheck(plumber.id) ? 'main-map-marker-plumber-button-available-active' : ''">
-                                <template v-if="personAvailableCheck(plumber.id)">
-                                    Yes, I'm available
-                                </template>
-                                <template v-else>
-                                    Are you still available?
-                                </template>
-                            </button>
-                            <button data-button-callback class="main-map-marker-plumber-button-callback">Callback</button>
+                        <div class="main-map-marker-plumber-grid">
+                            <div class="main-map-marker-plumber-avatar">
+                                <img class="main-map-marker-plumber-avatar-img" :src="plumber.avatar" :alt="plumber.firstName + ' ' + plumber.lastName">
+                            </div>
+                            <div class="main-map-marker-plumber-buttons">
+                                <button
+                                        type="button"
+                                        data-button-dialog
+                                        class="main-map-marker-plumber-button-available"
+                                        :class="personAvailableCheck(plumber.id) ? 'main-map-marker-plumber-button-available-active' : ''">
+                                    <template v-if="personAvailableCheck(plumber.id)">
+                                        Yes, I'm available
+                                    </template>
+                                    <template v-else>
+                                        Are you still available?
+                                    </template>
+                                </button>
+                                <button data-button-callback class="main-map-marker-plumber-button-callback">Callback</button>
+                            </div>
                         </div>
                     </l-icon>
                 </l-marker>

@@ -128,12 +128,12 @@
     color: #fff;
 }
 
+/* TODO: Delete if unnecessary */
 .person-dialog-modal-callbackbtn {
     display: flex;
     align-items: center;
     text-decoration: none;
     color: inherit;
-    border: 2px solid #1e8e3e;
     padding: 10px 15px;
     border-radius: 15px;
     background: #ebfff1;
@@ -159,4 +159,60 @@
     color: #1e8e3e;
     font-size: 20px;
     margin-bottom: 5px;
+}
+/* TODO: Delete if unnecessary */
+
+.person-dialog-modal-chat-form {
+    background: #e6e5ec;
+    padding: 14px;
+    border-radius: 14px;
+    margin-bottom: 15px;
+}
+
+.person-dialog-modal-chat-form-input {
+    width: 100%;
+    border-radius: 3px;
+    background: #fff;
+    border: 1px solid #bfbfbf;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    font-size: 18px;
+}
+
+.person-dialog-modal-chat-form-input:invalid {
+    box-shadow: none;
+}
+
+.person-dialog-modal-chat-form-input:focus {
+    border-color: #b8b8b8;
+    background: #eeffea;
+}
+
+.person-dialog-modal-chat-form-input-error {
+    background: #ffd1cf;
+    box-shadow: none;
+}
+
+.person-dialog-modal-chat-form-submit {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    background: #1e8e3e;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 3px;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+}
+
+.person-dialog-modal-chat-form-submit:hover,
+.person-dialog-modal-chat-form-submit:focus {
+    background: #1fb146;
+}
+
+.person-dialog-modal-chat-form-submit:active {
+    top: 1px;
 }
