@@ -1,13 +1,5 @@
 <template>
     <form action="#" @submit.prevent="submit" class="contact-form" :class="className">
-        <div class="contact-form-title">
-            We will find a best plumber near you within 5 minutes
-        </div>
-
-        <div class="contact-form-subtitle">
-            Please provide your contact details below
-        </div>
-
         <div class="contact-form-group">
             <input
                     type="text"
@@ -98,9 +90,17 @@
                     }, 2000);
                 }
             },
+            trackSubmit() {
+                this.$gtm.trackEvent({
+                    event: 'ContactFormSubmit',
+                    category: 'Form',
+                    action: 'click'
+                });
+            },
             submit() {
                 if (this.validate()) {
                     this.isSubmiting = true;
+                    this.trackSubmit();
 
                     setTimeout(() => {
                         this.isSubmiting = false;

@@ -25,7 +25,14 @@
                 <Header-menu />
 
                 <div class="main-header-contacts">
-                    +1 800 000-0000
+                    <a :href="'tel:' + phoneRaw" class="main-header-contacts-link">
+                        <span class="main-header-contacts-icon">
+                            <img src="../assets/images/icon-phone-green.svg" class="main-header-contacts-icon-img" alt="📱">
+                        </span>
+                        <span class="main-header-contacts-phone">
+                            {{ phone }}
+                        </span>
+                    </a>
                 </div>
             </div>
         </header>
@@ -33,6 +40,7 @@
 </template>
 
 <script>
+    import config from "../config";
     import HeaderMenu from './HeaderMenu.vue';
     import OffcanvasMenu from './OffcanvasMenu.vue';
     import Offcanvas from './Offcanvas';
@@ -41,6 +49,8 @@
         data() {
             return {
                 offcanvasActive: false,
+                phone: config.contactPhone,
+                phoneRaw: config.contactPhoneRaw
             }
         },
         components: {

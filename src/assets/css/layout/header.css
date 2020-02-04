@@ -100,3 +100,38 @@
     margin-left: auto;
     font-weight: 500;
 }
+
+.main-header-contacts-link {
+    display: flex;
+    align-items: center;
+}
+
+.main-header-contacts-link:hover .main-header-contacts-phone,
+.main-header-contacts-link:focus .main-header-contacts-phone {
+    text-decoration: underline;
+}
+
+.main-header-contacts-phone {
+    color: #000;
+}
+
+@media (max-width: 450px) {
+    .main-header-contacts-phone {
+        display: none;
+    }
+}
+
+.main-header-contacts-icon {
+    margin-right: 10px;
+}
+
+@media (max-width: 450px) {
+    .main-header-contacts-icon {
+        margin-right: 0;
+    }
+}
+
+.main-header-contacts-icon-img {
+    width: 28px;
+    height: 28px;
+}

@@ -12,14 +12,14 @@
                             Our mission
                         </div>
                         <div class="hero-block-title who-we-are-title">
-                            Making home ownership affordable
+                            Create the most convenient way of finding handymans near you
                         </div>
 
                         <div class="hero-block-subtitle mt-l mb-xxs">
                             Who we are
                         </div>
                         <div class="hero-block-desc">
-                            We are a team of local Mortgage professionals dedicated to providing our clients with expert Mortgage advice and award-winning customer service
+                            We are an online service dedicated to providing the most fastest and convenient way of searching for information
                         </div>
                     </div>
                 </div>

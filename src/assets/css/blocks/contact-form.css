@@ -10,6 +10,7 @@
     font-size: 42px;
     font-weight: bold;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 @media (max-width: 1200px) {
@@ -25,6 +26,7 @@
 }
 
 .contact-form-subtitle {
+    text-align: center;
     font-family: Raleway, sans-serif;
     font-size: 22px;
     font-weight: bold;
@@ -36,6 +38,7 @@
 }
 
 .contact-form-input {
+    width: 100%;
     font-size: 24px;
     border: none;
     border-bottom: 2px solid #cecece;
@@ -43,6 +46,7 @@
     box-shadow: none;
     padding: 5px 10px;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .contact-form-input-error {

@@ -4,7 +4,14 @@
         <main class="main-main">
             <Map />
             <div class="main-wrapper">
-                <Contact-form class-name="pt-l pb-l" />
+                <div class="contact-form-title pt-l">
+                    We will find a best plumber near you within 5 minutes
+                </div>
+
+                <div class="contact-form-subtitle">
+                    Please provide your contact details below
+                </div>
+                <Contact-form class-name="pb-l" />
             </div>
         </main>
         <Footer />

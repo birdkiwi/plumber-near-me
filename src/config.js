@@ -3,8 +3,11 @@ const config = {
     mapZoom: 15,
     // mapTilesUrl: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
     mapTilesUrl: 'https://tile-{s}.openstreetmap.fr/hot/{z}/{x}/{y}.png',
-    googleAnalyticsId: '',
+    gtagID: 'GTM-55TPCQ6',
     dataUrl: 'https://alex.toklovich.com:8889/data/index.json',
+    contactPhone: '+1 437 986 6477',
+    contactPhoneRaw: '+14379866477',
+    contactEmail: 'info@fixonair.com',
     // 1 hour interval
     personUpdateInterval: 3600000,
     limitPolygon: {

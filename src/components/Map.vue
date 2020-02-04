@@ -29,7 +29,7 @@
                         </div>
                         <div class="main-map-marker-plumber-grid">
                             <div class="main-map-marker-plumber-avatar">
-                                <img class="main-map-marker-plumber-avatar-img" :src="plumber.avatar" :alt="plumber.firstName + ' ' + plumber.lastName">
+                                <img class="main-map-marker-plumber-avatar-img" :src="plumber.avatar" :alt="plumber.firstName[0] + plumber.lastName[0]">
                             </div>
                             <div class="main-map-marker-plumber-buttons">
                                 <button
@@ -41,7 +41,7 @@
                                         Yes, I'm available
                                     </template>
                                     <template v-else>
-                                        Are you still available?
+                                        Contact with me
                                     </template>
                                 </button>
                                 <button data-button-callback class="main-map-marker-plumber-button-callback">Callback</button>
@@ -82,6 +82,7 @@
     import Callback from './Callback.vue';
     import MapInfoArea from './MapInfoArea.vue';
     import * as turf from '@turf/turf';
+    import randomPointsOnPolygon from 'random-points-on-polygon';
 
     export default {
         data () {
@@ -169,10 +170,25 @@
                     const lsPerson = ls.find(person => person.id === marker.id);
                     const lsPersonIndex = ls.findIndex(person => person.id === marker.id);
 
+                    function generetePos() {
+                        const polygon = {
+                            type: "Feature",
+                            properties: {},
+                            geometry: {
+                                type: "Polygon",
+                                coordinates: config.limitPolygon.coordinates
+                            }
+                        };
+                        const points = randomPointsOnPolygon(1, polygon);
+                        return points[0].geometry.coordinates;
+
+                        //TODO: https://turfjs.org/docs/#intersect
+                    }
+
                     if (lsPerson && !lsTimeout) {
                         marker.newposition = lsPerson.position;
                     } else {
-                        marker.newposition = [southWest.lat + latSpan * Math.random(),southWest.lng + lngSpan * Math.random()];
+                        marker.newposition = generetePos();
                     }
 
                     if (lsPerson) {
@@ -211,8 +227,8 @@
                     }
                 });
             },
-            geoCheckLocationLimit() {
-                const pt = turf.point([this.userGeo.lng, this.userGeo.lat]);
+            geoCheckLocationLimit(lngLat) {
+                const pt = turf.point(lngLat);
                 const poly = turf.polygon(config.limitPolygon.coordinates);
                 return turf.booleanPointInPolygon(pt, poly);
             },
@@ -242,7 +258,7 @@
         },
         async mounted() {
             await this.geoFindMe();
-            if (this.geoCheckLocationLimit()) {
+            if (this.geoCheckLocationLimit([this.userGeo.lng, this.userGeo.lat])) {
                 const markers = await this.getMarkers();
 
                 this.generateMarkersPositions(markers.plumbers);

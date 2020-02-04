@@ -92,11 +92,28 @@
                     return true
                 }
             },
+            trackSubmit() {
+                this.$gtm.trackEvent({
+                    event: 'CallbackSubmit',
+                    category: 'Map',
+                    action: 'click',
+                    value: this.person.id
+                });
+            },
             submit() {
                 if (this.validate()) {
+                    this.trackSubmit();
                     alert('submit event here!');
                 }
             },
+        },
+        mounted() {
+            this.$gtm.trackEvent({
+                event: 'Callback',
+                category: 'Map',
+                action: 'click',
+                value: this.person.id
+            });
         }
     }
 </script>

@@ -12,16 +12,16 @@
                     </div>
                 </div>
                 <div class="main-footer-disclaimer-text">
-                    *Disclaimer: If you qualify for a Canadian debt relief program, your individual results may vary. Results will vary based on individual circumstances. Program fees and commitment length will also vary dependent on the loan amount and current home equity. Typical program fees range from 2 - 3% of your loan amount, and program length ranges from 6 - 24 months."Recent Settlements" chart is solely to illustrate that company does obtain results for its clients, but is not intended as a promise or guarantee. Not all clients are able to complete their program for various reasons. APR between 6.99 and 14.99% .
+                    *Disclaimer: Fixonair (We). If you are searching for a plumber, your individual searching results may vary. Results will vary based on individual position on the map. We do not guarantee availability of plumber and quality of their services. Fixonair is content distributor and Fixonair will not be responsible for lost profits, revenues or data, financial losses or indirect, special, consequential, exemplary or punitive damages.
                 </div>
             </div>
 
             <div class="main-footer-copyright">
-                © Debtout.ca, 2019 Canadian debt relief program
+                © Fixonair.ca, 2020
 
                 <div class="main-footer-copyright-contacts">
                     <p>
-                        <a href="tel:+18772962696">1-877-296-2696</a>, <a href="mailto:info@debtout.ca">info@debtout.ca</a>
+                        <a :href="'mailto:' + email">{{ email }}</a>
                     </p>
                     <p>
                         <router-link to="/terms">Terms and Conditions</router-link> | <router-link to="/policy">Privacy Policy</router-link>
@@ -31,3 +31,15 @@
         </div>
     </footer>
 </template>
+
+<script>
+    import config from '../config';
+
+    export default {
+        data() {
+            return {
+                email: config.contactEmail
+            }
+        }
+    }
+</script>

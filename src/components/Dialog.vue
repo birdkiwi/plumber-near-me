@@ -31,6 +31,7 @@
                         </div>
                         <div class="person-dialog-modal-chat-person-message">
                             <div class="person-dialog-modal-chat-person-message-bubble">
+                                Hello, {{ person.firstName }}. <br>
                                 Could you help me, please?
                             </div>
                         </div>
@@ -48,7 +49,8 @@
                                     {{ person.firstName }} is typing message...
                                 </div>
                                 <div v-else class="person-dialog-modal-chat-person-message-bubble">
-                                    Yes, would you like to send me your address and phone number? I will be at your home within 25 min.
+                                    Yes, I’m available now. <br>
+                                    Please submit your details below and I will contact you within 10 minutes.
                                 </div>
                             </transition>
                         </div>
@@ -156,6 +158,7 @@
             btnSubmit() {
                 if (this.validate()) {
                     this.isSubmiting = true;
+                    this.trackSubmit();
 
                     setTimeout(() => {
                         this.isSubmiting = false;
@@ -166,6 +169,7 @@
             submit() {
                 if (this.validate()) {
                     this.isSubmiting = true;
+                    this.trackSubmit();
 
                     setTimeout(() => {
                         this.isSubmiting = false;
@@ -196,9 +200,24 @@
                 if (input.error) {
                     input.error = false;
                 }
+            },
+            trackSubmit() {
+                this.$gtm.trackEvent({
+                    event: 'DialogSubmit',
+                    category: 'Map',
+                    action: 'click',
+                    value: this.person.id
+                });
             }
         },
         mounted() {
+            this.$gtm.trackEvent({
+                event: 'Dialog',
+                category: 'Map',
+                action: 'click',
+                value: this.person.id
+            });
+
             const evokedPersons = this.$parent.$localStorage.get('evokedPersons', []);
             this.isEvoked = evokedPersons.indexOf(this.person.id) > -1;
 
