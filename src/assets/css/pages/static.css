@@ -1,0 +1,15 @@
+.static-page {
+    padding-bottom: 40px;
+}
+
+.static-page-title {
+    font-family: Raleway, sans-serif;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+@media (max-width: 660px) {
+    .static-page-title {
+        font-size: 30px;
+    }
+}
