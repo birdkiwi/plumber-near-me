@@ -21,7 +21,7 @@
                         ref="marker"
                         @click="iconClick(plumber, $event)"
                 >
-                    <l-icon class-name="main-map-marker-plumber">
+                    <l-icon :icon-anchor="[0, 0]" :icon-size="[260, 64]" class-name="main-map-marker-plumber">
                         <div class="main-map-marker-plumber-name-wrap">
                             <div class="main-map-marker-plumber-name">
                                 {{ plumber.firstName + ' ' + plumber.lastName}}
@@ -161,9 +161,17 @@
                 const bounds = this.$refs.mainMap.mapObject.getBounds();
                 const southWest = bounds.getSouthWest();
                 const northEast = bounds.getNorthEast();
-                const lngSpan = northEast.lng - southWest.lng;
-                const latSpan = northEast.lat - southWest.lat;
                 const lsTimeout = (Date.now() - this.$localStorage.get('personsLocationTime', 0)) > config.personUpdateInterval;
+                const limitPolygon = turf.polygon(config.limitPolygon.coordinates);
+                const screenPolygon = turf.polygon([[
+                    [northEast.lng, northEast.lat],
+                    [southWest.lng, northEast.lat],
+                    [southWest.lng, southWest.lat],
+                    [northEast.lng, southWest.lat],
+                    [northEast.lng, northEast.lat]
+                ]]);
+                const intersection = turf.intersect(screenPolygon, limitPolygon);
+                console.log(intersection);
 
                 markers.forEach(marker => {
                     const ls = this.$localStorage.get('personsLocation', []);
@@ -171,18 +179,8 @@
                     const lsPersonIndex = ls.findIndex(person => person.id === marker.id);
 
                     function generetePos() {
-                        const polygon = {
-                            type: "Feature",
-                            properties: {},
-                            geometry: {
-                                type: "Polygon",
-                                coordinates: config.limitPolygon.coordinates
-                            }
-                        };
-                        const points = randomPointsOnPolygon(1, polygon);
-                        return points[0].geometry.coordinates;
-
-                        //TODO: https://turfjs.org/docs/#intersect
+                        const points = randomPointsOnPolygon(1, intersection);
+                        return [points[0].geometry.coordinates[1], points[0].geometry.coordinates[0]];
                     }
 
                     if (lsPerson && !lsTimeout) {

@@ -23,7 +23,6 @@
 }
 
 .main-map-marker-plumber {
-    position: relative;
     width: 260px !important;
     height: 64px !important;
     text-align: center;
@@ -40,6 +39,8 @@
 }
 
 .main-map-marker-plumber-name-wrap {
+    position: absolute;
+    margin-top: -40px;
     width: 260px;
     margin-left: -98px;
     text-align: center;

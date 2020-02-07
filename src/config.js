@@ -12,6 +12,7 @@ const config = {
     personUpdateInterval: 3600000,
     limitPolygon: {
         "type": "Polygon",
+        "properties": {},
         "coordinates": [
             [
                 [
