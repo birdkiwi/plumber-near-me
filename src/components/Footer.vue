@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="main-footer-disclaimer-text">
-                    *Disclaimer: Fixonair (We). If you are searching for a plumber, your individual searching results may vary. Results will vary based on individual position on the map. We do not guarantee availability of plumber and quality of their services. Fixonair is content distributor and Fixonair will not be responsible for lost profits, revenues or data, financial losses or indirect, special, consequential, exemplary or punitive damages.
+                    *Disclaimer: Fixonair (We). If you are searching for a plumber, your individual searching results may vary. Results will vary based on individual position on the map. We do not guarantee availability of a plumber and the quality of their services. Fixonair is a content distributor and Fixonair is not responsible for lost profits, revenues or data, financial losses or indirect, special, consequential, exemplary or punitive damages.
                 </div>
             </div>
 

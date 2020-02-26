@@ -21,6 +21,7 @@
 @media (max-width: 575px) {
     .main-footer-disclaimer {
         flex-direction: column;
+        margin-bottom: 15px;
     }
 }
 
@@ -34,7 +35,7 @@
     .main-footer-disclaimer-logo {
         flex-basis: auto;
         padding-right: 0;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
         text-align: center;
     }
 }
@@ -62,12 +63,35 @@
     text-align: left;
 }
 
+@media (max-width: 575px) {
+    .main-footer-disclaimer-text {
+        font-size: 11px;
+    }
+}
+
 .main-footer-copyright {
     text-align: center;
 }
 
+@media (max-width: 575px) {
+    .main-footer-copyright {
+        font-size: 13px;
+    }
+}
+
 .main-footer-copyright-contacts {
     margin-top: 20px;
+}
+
+@media (max-width: 575px) {
+    .main-footer-copyright-contacts {
+        margin-top: 10px;
+    }
+
+    .main-footer-copyright-contacts p {
+        margin-top: 7px;
+        margin-bottom: 7px;
+    }
 }
 
 .main-footer-copyright-contacts a {
