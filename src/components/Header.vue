@@ -2,7 +2,7 @@
     <div>
         <Offcanvas :active="offcanvasActive" v-click-outside="outsideClick">
             <router-link to="/" class="main-offcanvas-logo">
-                <img src="../assets/images/logo-canaho.svg" alt="" class="main-offcanvas-logo-img">
+                <img src="../assets/images/logo.svg" alt="" class="main-offcanvas-logo-img">
             </router-link>
             <Offcanvas-menu />
         </Offcanvas>
@@ -19,7 +19,7 @@
                 </a>
 
                 <router-link to="/" class="main-header-logo">
-                    <img src="../assets/images/logo-canaho.svg" alt="Canaho.ca" width="120" class="main-header-logo-img">
+                    <img src="../assets/images/logo.svg" alt="Fixonair.ca" width="200" class="main-header-logo-img">
                 </router-link>
 
                 <Header-menu />

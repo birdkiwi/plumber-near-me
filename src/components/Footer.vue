@@ -3,7 +3,7 @@
         <div class="main-footer-wrapper">
             <div class="main-footer-disclaimer">
                 <div class="main-footer-disclaimer-logo">
-                    <img src="../assets/images/logo-canaho.svg" alt="" class="main-footer-disclaimer-logo-img">
+                    <img src="../assets/images/logo.svg" alt="" class="main-footer-disclaimer-logo-img">
 
                     <div class="main-footer-disclaimer-address">
                         4773 Yonge St. <br>
