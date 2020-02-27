@@ -4,9 +4,21 @@
     min-height: calc(100vh - 50px);
 }
 
+@media (max-width: 967px) {
+    .main-map {
+        min-height: calc(80vh - 50px);
+    }
+}
+
 .main-map-leaflet {
     width: 100%;
     min-height: calc(100vh - 50px);
+}
+
+@media (max-width: 967px) {
+    .main-map-leaflet {
+        min-height: calc(80vh - 50px);
+    }
 }
 
 .main-map-spinner {

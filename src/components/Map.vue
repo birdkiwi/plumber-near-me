@@ -75,7 +75,7 @@
 <script>
     import config from "../config";
     import { LMap, LTileLayer, LMarker, LIcon } from 'vue2-leaflet';
-    // import L from 'leaflet';
+    import L from 'leaflet';
     import 'leaflet/dist/leaflet.css';
     import Spinner from 'vue-simple-spinner'
     import Dialog from './Dialog.vue';
@@ -84,6 +84,10 @@
     import * as turf from '@turf/turf';
     import randomPointsOnPolygon from 'random-points-on-polygon';
 
+    const limitPolygon = turf.polygon(config.limitPolygon.coordinates);
+    const bboxLimitPolygon = turf.bbox(config.limitPolygon);
+    let bounds;
+
     export default {
         data () {
             return {
@@ -91,7 +95,7 @@
                 infoAreaType: 'default',
                 mapSpinner: true,
                 url: config.mapTilesUrl,
-                zoom: config.mapZoom,
+                zoom: L.Browser.mobile ? config.mapZoom - 1 : config.mapZoom,
                 center: config.mapCenter,
                 bounds: null,
                 mapOptions: {
@@ -100,9 +104,8 @@
                     zoomControl: false,
                     boxZoom: false,
                     doubleClickZoom: false,
-                    dragging: false,
                     tap: false,
-                    // dragging: !L.Browser.mobile,
+                    dragging: L.Browser.mobile
                 },
                 markers: [],
                 dialogPerson: false,
@@ -158,11 +161,13 @@
                     .then(response => response.json());
             },
             generateMarkersPositions(markers) {
-                const bounds = this.$refs.mainMap.mapObject.getBounds();
+                bounds = this.$refs.mainMap.mapObject.getBounds();
+                if (L.Browser.mobile) {
+                    this.zoom = config.mapZoom;
+                }
                 const southWest = bounds.getSouthWest();
                 const northEast = bounds.getNorthEast();
                 const lsTimeout = (Date.now() - this.$localStorage.get('personsLocationTime', 0)) > config.personUpdateInterval;
-                const limitPolygon = turf.polygon(config.limitPolygon.coordinates);
                 const screenPolygon = turf.polygon([[
                     [northEast.lng, northEast.lat],
                     [southWest.lng, northEast.lat],
@@ -171,7 +176,6 @@
                     [northEast.lng, northEast.lat]
                 ]]);
                 const intersection = turf.intersect(screenPolygon, limitPolygon);
-                console.log(intersection);
 
                 markers.forEach(marker => {
                     const ls = this.$localStorage.get('personsLocation', []);
@@ -266,9 +270,21 @@
                 if (markers.plumbers.length > 1) {
                     this.infoAreaMessage = `We found ${markers.plumbers.length} available plumbers nearby!`;
                 }
+
+                // Limit pan to city bounds
+                this.$refs.mainMap.mapObject.setMaxBounds(L.latLngBounds(
+                    L.latLng(bboxLimitPolygon[1], bboxLimitPolygon[0]),
+                    L.latLng(bboxLimitPolygon[3], bboxLimitPolygon[2]),
+                ));
+
+                // Limit pan to zoom-1 on mobiles
+                // this.$refs.mainMap.mapObject.setMaxBounds(bounds);
             } else {
                 this.infoAreaMessage = 'Unfortunately you are too far, no plumbers found nearby';
                 this.infoAreaType = 'warning';
+
+                // Disable map drag, cause nothing to show here
+                this.$refs.mainMap.mapObject.dragging.disable();
             }
 
             this.mapSpinner = false;
