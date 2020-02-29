@@ -21,6 +21,19 @@
     padding: 0 10px;
 }
 
+.main-offcanvas-close {
+    position: absolute;
+    left: 7px;
+    top: 7px;
+    width: 32px;
+    height: 32px;
+}
+
+.main-offcanvas-close-svg:hover,
+.main-offcanvas-close-svg:focus {
+    fill: #1e8e3e;
+}
+
 .main-offcanvas-logo {
     display: block;
     margin-top: 10px;
