@@ -13,7 +13,7 @@ const routes = [
         name: 'home',
         component: Home,
         meta: {
-            title: 'Plumber Near Me',
+            title: 'Fixonair.com',
             metaTags: [
                 {
                     name: 'description',
@@ -31,7 +31,7 @@ const routes = [
         name: 'who-we-are',
         component: WhoWeAre,
         meta: {
-            title: 'Who we are — Plumber Near Me',
+            title: 'Who we are — Fixonair.com',
             metaTags: [
                 {
                     name: 'description',
@@ -49,7 +49,7 @@ const routes = [
         name: 'joinus',
         component: JoinUs,
         meta: {
-            title: 'Join us — Plumber Near Me',
+            title: 'Join us — Fixonair.com',
             metaTags: [
                 {
                     name: 'description',
@@ -67,7 +67,7 @@ const routes = [
         name: 'contacts',
         component: Contacts,
         meta: {
-            title: 'Contacts — Plumber Near Me',
+            title: 'Contacts — Fixonair.com',
             metaTags: [
                 {
                     name: 'description',
@@ -85,7 +85,7 @@ const routes = [
         name: 'thank-you',
         component: ThankYou,
         meta: {
-            title: 'Thank you — Plumber Near Me',
+            title: 'Thank you — Fixonair.com',
             metaTags: [
                 {
                     name: 'description',
@@ -103,7 +103,7 @@ const routes = [
         name: 'policy',
         component: Policy,
         meta: {
-            title: 'Policy — Plumber Near Me',
+            title: 'Policy — Fixonair.com',
             metaTags: [
                 {
                     name: 'description',
@@ -121,7 +121,7 @@ const routes = [
         name: 'terms',
         component: Terms,
         meta: {
-            title: 'Terms — Plumber Near Me',
+            title: 'Terms — Fixonair.com',
             metaTags: [
                 {
                     name: 'description',
